@@ -20,7 +20,7 @@ app.use(express.json()) // to make the content header     application/json
 
 
 //app.use('/users', require('./routes/users')
-app.use('/', eventRoute)
+app.use('/', eventRoute);
 
 
 app.listen(5000, () =>{

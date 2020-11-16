@@ -1,34 +1,62 @@
 const mongoose = require('mongoose');
-const { isEmail } = require('validator')
+//const { isEmail } = require('validator')
 // const { string } = require('prop-types')
 
 
-const clientSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-        maxlength: [35, "Maximum name length is 35 char"]
+// const clientSchema = new mongoose.Schema({
+//     name: {
+//         type: String,
+//         required: true,
+        
+//     },
+//     email: {
+//         type: String,
+//         required: true,
+//         unique: true,
+//         lowercase: true
+//         //validate: [isEmail, 'Please enter a valid email']
+//     },
+//     password: {
+//         type: String,
+//         required: true
+        
+//     },
+//     location: String,
+//     phoneNumber: Number
+// })
+const clientSchema = mongoose.Schema({
+
+    name :{
+        type:String,
+        required:true,
+        min : 6,
+        max : 255
     },
-    email: {
-        type: String,
-        required: [true, 'Please enter an email'],
-        unique: true,
-        lowercase: true,
-        validate: [isEmail, 'Please enter a valid email']
+    email:{
+        type:String,
+        required:true,
     },
-    password: {
-        type: String,
-        required: [true, 'Please enter a password'],
-        minlength: [6, 'Minimum password length is 6 characters']
+    password:{
+        type:String,
+        required:true,
+        min : 6,
+        max : 255
     },
-    location: String,
-    phoneNumber: Number
+    location:{
+        type:String,
+        
+
+    },phoneNumber:{
+        type : String
+    }
+
 })
+
 const eventSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, "Please enter your name"],
-        maxlength: [35, "Maximum name length is 35 char"]
+        required: true,
+        maxlength: 35
     },
     startDate: Number,
     endDate: Number,
@@ -36,23 +64,24 @@ const eventSchema = new mongoose.Schema({
     endTime: Number,
     clients: [clientSchema]
 })
+
 const companySchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        maxlength: [35, "Maximum name length is 35 char"]
+        maxlength: 35
     },
     email: {
         type: String,
-        required: [true, 'Please enter an email'],
+        required: true,
         unique: true,
         lowercase: true,
-        validate: [isEmail, 'Please enter a valid email']
+        //validate: [isEmail, 'Please enter a valid email']
     },
     password: {
         type: String,
-        required: [true, 'Please enter a password'],
-        minlength: [6, 'Minimum password length is 6 characters']
+        required: true,
+        minlength: 6
     },
     location: String,
     phoneNumber: Number,
@@ -62,8 +91,8 @@ const companySchema = new mongoose.Schema({
 
 const Company = mongoose.model('company', companySchema);
 const Event = mongoose.model('event', eventSchema);
-const client = mongoose.model('client', clientSchema);
+const Client = mongoose.model('client', clientSchema);
 
 
-//module.exports = {Event,Company,client};
-module.exports = client;
+module.exports = {Event,Company,Client};
+//module.exports = client;
