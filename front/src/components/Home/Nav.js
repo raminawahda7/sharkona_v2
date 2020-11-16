@@ -1,6 +1,7 @@
 import React , {Component} from "react";
-import {Link ,NavLink} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 class Nav extends Component {
     render(){
         
@@ -15,10 +16,10 @@ class Nav extends Component {
               </button>
               <div className="collapse navbar-collapse" id="navbarResponsive">
                   <ul className="navbar-nav text-uppercase ml-auto">
-                      <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to=""> Login  </NavLink></li>
-                      <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="#"> Sign up  </NavLink></li>
+                      <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="#"> Login</NavLink></li>
+                      <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="#"> Sign up</NavLink></li>
                       <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/event">Events </NavLink></li>
-                      <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/home">home</NavLink></li>
+                      <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/">home</NavLink></li>
          
                   </ul>
               </div>

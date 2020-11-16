@@ -3,7 +3,7 @@ import './App.css';
 import {BrowserRouter,Route,Switch} from "react-router-dom"
 import Nav from './components/Home/Nav';
 import Header from './components/Home/Header';
-// import Event from "./components/Event"
+import Event from "./components/Home/event/event"
 function App() {
   return (
     <div className="App">
@@ -11,10 +11,10 @@ function App() {
       <BrowserRouter>
         <Nav />
         <Switch>
-        <Route exact path={"home"} component={Header}></Route>
-        {/* <Route  path={"/event"} component={Event}></Route> */}
+        <Route exact path={"/"} component={Header}></Route>
+        <Route  path={"/event"} component={Event}></Route>
         {/* <Route path = {"/footer"}></Route> */}
-        <Route  path = {"/event"} component={Event}></Route>
+        {/* <Route  path = {"/event"} component={Event}></Route> */}
       </Switch>
               
       </BrowserRouter>
