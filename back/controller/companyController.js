@@ -3,6 +3,8 @@ const jwt = require("jsonwebtoken");
 const joi = require("@hapi/joi");
 const Company = require('../model/companySchema').Company;
 const Client = require('../model/clientSchema').Client;
+const auth = require ("./auth")
+
 
 //this schema to validate data from the client before saved it in database  
 const companySchema = joi.object({
@@ -41,7 +43,7 @@ if (isEmailExsistforClient) return res.status(400).send("email already exist in 
     password: hashPassword,
     location:req.body.location,
     phoneNumber:req.body.phoneNumber,
-    clients:[]
+    events:[]
   });
   //console.log(company)
 
@@ -76,4 +78,8 @@ exports.signin =  async (req, res) => {
   const token = jwt.sign({_id:company._id},process.env.TOKEN);
   //console.log(token);
   res.header("login",token).send(token);
+}
+exports.companylogout =  (req, res) => {
+  res.cookie('login', '')
+  res.status(200).send(req.company);
 }
