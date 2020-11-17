@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const dotenv = require("dotenv");
 dotenv.config();
-const eventRoute = require('./routes/eventRouter')
+const Route = require('./routes/Router')
 mongoose.connect( process.env.DB_CONNECT,
   {
     useNewUrlParser: true, useUnifiedTopology: true,
@@ -20,7 +20,7 @@ app.use(express.json()) // to make the content header     application/json
 
 
 //app.use('/users', require('./routes/users')
-app.use('/', eventRoute);
+app.use('/', Route);
 
 
 app.listen(5000, () =>{
