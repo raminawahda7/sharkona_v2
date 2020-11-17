@@ -1,6 +1,6 @@
-
-
 const Event = require('../model/eventSchema').Event;
+const auth = require ("./auth")
+
 
 //this signup method for post requeset from client to save data in database 
 exports.addEvent = async (req, res) => {
@@ -11,7 +11,8 @@ exports.addEvent = async (req, res) => {
     startDate: req.body.startDate,
     endDate: req.body.endDate,
     location: req.body.location,
-    phoneNumber: req.body.phoneNumber
+    phoneNumber: req.body.phoneNumber,
+    clients:[]
   });
 
 
@@ -28,6 +29,53 @@ exports.addEvent = async (req, res) => {
 
 
 }
-exports.addEvent = async (req, res) => {
 
+exports.deleteEvent = async(req, res)=> {
+  let _id = req.params.id
+  console.log(_id)
+  let deletedEvent = await Event.findOne({_id}) 
+  console.log(deletedEvent)
+  Event.deleteOne({ _id })
+  .then(( event ) => res.status(200).json(deletedEvent) )
+  .catch((err) => res.status(404).json({success:false}))
+};
+
+
+exports.delete = async (req, res)=> {
+  Event.deleteMany()
+      .exec( (err, deletedEvents) => {
+          if(err) return res.status(404).json({success:false})
+          res.status(200).json(deletedEvents)
+      } )
+};
+
+
+exports.retrieveOneEvent = async (req,res)=> {
+  try{
+   const event = await Event.findById(req.params.id)
+   res.json(event)
+  }catch(err){
+   res.send('Error' , err)
+  } 
 }
+
+exports.retrieveEvent = function (req, res) {
+  Event.find()
+      .exec( (err,events) => {
+          if(err) return res.status(404).json({success:false})
+          res.status(200).json(events)
+      } )
+
+};
+
+exports.updateEvent =  async(req, res) =>{
+  let _id = req.params.id
+  
+
+  Event.updateOne({ _id } , req.body)
+      .exec((err,status ) => {
+          if(err) return res.status(404).json({success:false})
+          res.status(201).json(req.body)
+      })
+  
+};

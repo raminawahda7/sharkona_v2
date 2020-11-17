@@ -24,7 +24,7 @@ const eventSchema = mongoose.Schema({
     },phoneNumber:{
         type : String
     },
-    Clients :[{
+    clients :[{
         type : mongoose.Schema.Types.ObjectId ,
          ref:"clientSchema"}]
 

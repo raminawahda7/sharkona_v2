@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const joi = require("@hapi/joi");
 const Client = require('../model/clientSchema').Client;
 const Company = require('../model/companySchema').Company;
+const auth = require ("./auth")
 
 //const Client = require('../model/companySchema').company;
 
@@ -73,4 +74,8 @@ exports.signin =  async (req, res) => {
   const token = jwt.sign({_id:client._id},process.env.TOKEN);
   //console.log(token);
   res.header("login",token).send(token);
+}
+exports.clientlogout =  (req, res) => {
+  res.cookie('login', '')
+  res.status(200).send(req.client);
 }
