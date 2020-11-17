@@ -1,59 +1,52 @@
-import React from 'react';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import './index.css';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React,{Component} from 'react';
+import './App.css';
+import {BrowserRouter,Route,Switch} from "react-router-dom"
+import Nav from './components/Home/Nav';
+import Header from './components/Home/Header';
+import Signup from "./components/signup"
+import Signuporg from "./components/signuporg"
+import Event from "./components/Home/event/event"
+import Login from './components/login';
+import About from './components/about';
+import Footer from './components/Home/Footer';
 
-import Login from "./components/LogIn";
-import ClientSignUp from "./components/ClientSignUp";
-import OrganizerSignUp from "./components/OrganizerSignUp";
-import AddEvent from "./components/AddEvent";
-import Event from "./components/Event";
-import logo from 'C:/Users/h/Desktop/RIBSH/sharkona_v2/front/src/photo/logoo.png'
 
-function App() {
-  return (<Router>
-    <div className="App">
-      <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-        <div className="container">
-          <Link className="navbar-brand" to={"/sign-in"}><img src={logo} width="150" height="150"/></Link>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to={"/sign-in"} >Login</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to={"/Clientsign-up"}>Client-Signup</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to={"/Orgsign-up"}>Org-Signup</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to={"/Add-Event"}>Add Event</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to={"/Event"}>Event</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+class App extends Component {
+  state = {
+    belal:{name:"belal",age:"2555"}
+  } 
+  render(){
 
-      <div className="auth-wrapper">
-        <div className="auth-inner">
+        // <div>
+        // <Header name={this.state.belal} />
+        // <Login /> 
+        // </div>
+
+    return (
+      <div className="App">
+        <div> 
+        <BrowserRouter>
+          <Nav />
           <Switch>
-            <Route exact path='/' component={Login} />
-            <Route path="/sign-in" component={Login} />
-            <Route path="/Clientsign-up" component={ClientSignUp} />
-            <Route path="/Orgsign-up" component={OrganizerSignUp} />
-            <Route path="/Add-Event" component={AddEvent} />
-            <Route path="/Event" component={Event} />
+          <Route exact path={"/"} component={Header}></Route>
+          <Route exact path={"/login"} component={Login}></Route>
+          <Route  path={"/event"} component={Event}></Route>
+          <Route  path={"/signup"} component={Signup}></Route>
+          <Route  path={"/signuporg"} component={Signuporg}></Route>
+          <Route  path={"/about"} component={About}></Route>
+          {/* <Route  path = {"/event"} component={Event}></Route> */}
+        </Switch>
+        <Footer />
+                
+        </BrowserRouter>
+          </div>
+  
+        </div> 
+    )
+  }
 
-
-          </Switch>
-        </div>
-      </div>
-    </div></Router>
-  );
+  
 }
 
+  
 export default App;
