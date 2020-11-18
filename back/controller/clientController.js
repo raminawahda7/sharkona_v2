@@ -62,7 +62,7 @@ exports.signin =  async (req, res) => {
   //res.send("sing in page");
 //to check if data from user is correct or not
   const {error} = loginSchema.validate(req.body);
-  if(error) res.send(error.details[0].message);
+  if(error) res.status(400).send(error.details[0].message);
 //check if email exist or not in database collection
   const client = await Client.findOne({email:req.body.email});
   console.log(client);
