@@ -3,6 +3,7 @@ import axios from 'axios'
 import { NavLink } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const token =''
 class Login extends Component {
   constructor(props) {
     super(props)
@@ -27,7 +28,15 @@ class Login extends Component {
       })
     }
     
-  
+  // handelOnclick =async (e)=>{
+  //   e.preventDefault();
+  //   // console.log("ourCLient", this.state)
+  //   axios.post('/signinClient' , this.state)
+  //     .then((response)=>{
+        
+  //       console.log(this.state.email)
+  //     })
+  // }
   render() {
 
     return (
@@ -65,7 +74,11 @@ class Login extends Component {
                   <div className="col-lg-12 text-center">
                     <div id="success"></div>
                     <button onClick={this.handelOnClick} id=" join us " className="btn btn-primary btn-xl text-uppercase" type="submit">join us</button>
+                    {/* <button onClick={this.handelOnclick} id=" know client " className="btn btn-primary btn-xl text-uppercase" type="submit">know client</button> */}
                   </div>
+                
+                    
+                  
                 </div>
               </form>
             </div>
