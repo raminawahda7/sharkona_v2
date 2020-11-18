@@ -9,6 +9,7 @@ import Event from "./components/Home/event/event"
 import Login from './components/LogIn';
 import About from './components/about';
 import Footer from './components/Home/Footer';
+import EventForm from './components/Home/event/EventForm';
 
 
 class App extends Component {
@@ -29,7 +30,8 @@ class App extends Component {
           <Route exact path={"/event"}  render={ () => ( <Event  /> )  }/>
           <Route exact path={"/signup"}  render={ () => ( <Signup  /> )  }/>
           <Route exact path={"/signuporg"}  render={ () => ( <Signuporg  /> )}/>
-          <Route exact path={"/signuporg"}  render={ () => ( <About  /> )}/>
+          <Route exact path={"/about"}  render={ () => ( <About  /> )}/>
+          <Route exact path={"/event/EventForm"}  render={ () => ( <EventForm  /> )  }/>
 
       
         </Switch>
