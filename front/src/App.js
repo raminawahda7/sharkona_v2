@@ -30,15 +30,7 @@ class App extends Component {
           <Route exact path={"/signuporg"}  render={ () => ( <Signuporg  /> )}/>
           <Route exact path={"/signuporg"}  render={ () => ( <About  /> )}/>
 
-          {/* <Route exact path={"/"} component= {Header}></Route> */}
-
-          {/* <Route exact path={"/login"} component={Login} /> */}
-          {/* <Route  path={"/event"} component={Event} /> */}
-          {/* <Route  path={"/signup"} component={Signup} /> */}
-
-          {/* <Route  path={"/signuporg"} component={Signuporg} /> */}
-          {/* <Route  path={"/about"} component={About} /> */}
-          {/* <Route  path = {"/event"} render={Event}></Route> */}
+      
         </Switch>
         <Footer />
                 
