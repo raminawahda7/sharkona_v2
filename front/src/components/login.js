@@ -2,9 +2,12 @@ import React , {Component} from "react";
 import {NavLink} from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
+
 class Login extends Component {
-  render(){
-        
+
+
+  render(){  
     return (
         <section className="page-section" id="contact">
         <div className="container">
@@ -39,7 +42,7 @@ class Login extends Component {
                    <div className="clearfix"></div>
                    <div className="col-lg-12 text-center">
                      <div id="success"></div>
-                     <button id=" join us " className="btn btn-primary btn-xl text-uppercase" type="submit">join us</button>
+                     <button  id=" join us " className="btn btn-primary btn-xl text-uppercase" type="submit">join us</button>
                    </div>
                  </div>
                </form>
