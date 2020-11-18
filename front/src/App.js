@@ -28,7 +28,7 @@ class App extends Component {
           <Route exact path={"/"}  render={ () => ( <Header belal={this.state.belal} /> )  }/>
           <Route exact path={"/login"}  render={ () => ( <Login  /> )  }/>
           <Route exact path={"/event"}  render={ () => ( <Event  /> )  }/>
-          <Route exact path={"/signup"}  render={ () => ( <Signup  /> )  }/>
+          <Route exact path={"/ClientSignUp"}  render={ () => ( <Signup  /> )  }/>
           <Route exact path={"/signuporg"}  render={ () => ( <Signuporg  /> )}/>
           <Route exact path={"/about"}  render={ () => ( <About  /> )}/>
           <Route exact path={"/event/EventForm"}  render={ () => ( <EventForm  /> )  }/>

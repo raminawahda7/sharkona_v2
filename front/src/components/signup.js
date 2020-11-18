@@ -3,7 +3,6 @@ import {NavLink} from "react-router-dom"
 import axios from "axios"
 import 'bootstrap/dist/css/bootstrap.min.css';
 class Signup extends Component {
-  
   state = {
           name: '',
           password: '',
@@ -29,14 +28,10 @@ class Signup extends Component {
               location: '',
               phoneNumber: '',
             })
-          
           }
-    
-      
   render(){
     // console.log(this.state)
     return (
- 
         <section className="page-section" id="contact">
         <div className="container">
           <div className="row">
@@ -76,12 +71,7 @@ class Signup extends Component {
                       <img className = "imgarea" id= "img" src ""
                        <p className="help-block text-danger"></p>
                      </div> */}
-                   
-        
                    </div>
-                   
-                   
-                 
                    <div className="clearfix"></div>
                    <div className="col-lg-12 text-center">
                      <div id="success"></div>

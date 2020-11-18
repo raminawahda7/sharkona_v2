@@ -19,7 +19,7 @@ class Nav extends Component {
                   <ul className="navbar-nav text-uppercase ml-auto">
                       <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/">Home</NavLink></li>
                       <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/login"> Login</NavLink></li>
-                      <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/signup"> User Sign up</NavLink></li>
+                      <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/ClientSignUp"> User Sign up</NavLink></li>
                       <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/signuporg"> Organizer Sign up </NavLink></li>
                       <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/event">Events </NavLink></li>
                       <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/about">About</NavLink></li>
