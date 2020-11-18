@@ -1,10 +1,37 @@
 import React , {Component} from "react";
 import {NavLink} from "react-router-dom"
+import axios from "axios" ;
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Signuporg extends Component {
+  state = {
+    name: '',
+    password: '',
+    email: '',
+    location: '',
+    phoneNumber: '',
+}
+handleChangeInput = (e) => {
+  let {name,value} = e.target ;
+  this.setState({ [name]:value })
+  // console.log(e.target)
+}
+signup = (e)=>{
+  e.preventDefault();
+  axios.post("/signupCompany",this.state)
+    .then((response)=>{
+    console.log(response)
+      })
+      this.setState({
+        name: '',
+        password: '',
+        email: '',
+        location: '',
+        phoneNumber: '',
+      })
+    
+    }
   render(){
-        
     return (
  
         <section className="page-section" id="contact">
@@ -21,28 +48,28 @@ class Signuporg extends Component {
                      <div className="row">
                        <div className="col-md-6">
                          <div className="form-group">
-                           <input className="form-control" id="name" type="text" placeholder="Your Name *" required="required" data-validation-required-message="Please enter your name."/>
+                           <input className="form-control" value= {this.state.name}  onChange={this.handleChangeInput}  name="name" id="name" type="text" placeholder="Your Name *" required="required" data-validation-required-message="Please enter your name."/>
                    <p className="help-block text-danger"></p>
                          </div>
                         
                          <div className="form-group">
-                           <input className="form-control" id="phone" type="tel" placeholder="Your Phone *" required="required" data-validation-required-message="Please enter your phone number."/>
+                           <input className="form-control"value= {this.state.location}  onChange={this.handleChangeInput}  name="location" id="phone" type="tel" placeholder="Your Phone *" required="required" data-validation-required-message="Please enter your phone number."/>
                            <p className="help-block text-danger"></p>
                          </div>
                          <div className="form-group">
-                          <input className="form-control" id="email" type="text" placeholder="Your Company Name *" required="required" data-validation-required-message="Please enter your email Company Name ."/>
+                          <input className="form-control"  value= {this.state.location}  onChange={this.handleChangeInput}  name="location"id="email" type="text" placeholder="Your Company Name *" required="required" data-validation-required-message="Please enter your email Company Name ."/>
                            <p className="help-block text-danger"></p>
                          </div>
             
                        </div>
                        <div className="col-md-6">
                        <div className="form-group">
-                          <input className="form-control" id="email" type="email" placeholder="Your Email *" required="required" data-validation-required-message="Please enter your email address."/>
+                          <input className="form-control" value= {this.state.location}  onChange={this.handleChangeInput}  name="location"id="email" type="email" placeholder="Your Email *" required="required" data-validation-required-message="Please enter your email address."/>
                            <p className="help-block text-danger"></p>
                          </div>
 
                          <div className="form-group">
-                           <input className="form-control" id="name" type="text" placeholder="Your Locationn  *" required="required" data-validation-required-message="Please enter your Locaton."/>
+                           <input className="form-control" value= {this.state.location}  onChange={this.handleChangeInput}  name="location" id="name" type="text" placeholder="Your Locationn  *" required="required" data-validation-required-message="Please enter your Locaton."/>
                    <p className="help-block text-danger"></p>
                          </div>
              
