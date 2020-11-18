@@ -1,8 +1,7 @@
 import React , {Component} from "react";
 import {NavLink} from "react-router-dom"
-import axios from "axios" ;
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import axios from "axios"
 class Signuporg extends Component {
   state = {
     name: '',
@@ -29,11 +28,9 @@ signup = (e)=>{
         location: '',
         phoneNumber: '',
       })
-    
     }
   render(){
     return (
- 
         <section className="page-section" id="contact">
             <div className="container">
               <div className="row">
@@ -47,40 +44,33 @@ signup = (e)=>{
                   <form id="contactForm" name="sentMessage" novalidate="novalidate">
                      <div className="row">
                        <div className="col-md-6">
-                         <div className="form-group">
-                           <input className="form-control" value= {this.state.name}  onChange={this.handleChangeInput}  name="name" id="name" type="text" placeholder="Your Name *" required="required" data-validation-required-message="Please enter your name."/>
-                   <p className="help-block text-danger"></p>
-                         </div>
-                        
-                         <div className="form-group">
-                           <input className="form-control"value= {this.state.location}  onChange={this.handleChangeInput}  name="location" id="phone" type="tel" placeholder="Your Phone *" required="required" data-validation-required-message="Please enter your phone number."/>
+                        <div className="form-group">
+                          <input className="form-control"  value= {this.state.name} onChange={this.handleChangeInput} name="name" id="email" type="text" placeholder="Your Company Name *" required="required" data-validation-required-message="Please enter your Company Name ."/>
                            <p className="help-block text-danger"></p>
                          </div>
                          <div className="form-group">
-                          <input className="form-control"  value= {this.state.location}  onChange={this.handleChangeInput}  name="location"id="email" type="text" placeholder="Your Company Name *" required="required" data-validation-required-message="Please enter your email Company Name ."/>
+                           <input className="form-control" value= {this.state.phoneNumber} onChange={this.handleChangeInput}   name="phoneNumber" id="phone" type="tel" placeholder="Your Phone *" required="required" data-validation-required-message="Please enter your phone number."/>
                            <p className="help-block text-danger"></p>
                          </div>
-            
                        </div>
                        <div className="col-md-6">
                        <div className="form-group">
-                          <input className="form-control" value= {this.state.location}  onChange={this.handleChangeInput}  name="location"id="email" type="email" placeholder="Your Email *" required="required" data-validation-required-message="Please enter your email address."/>
+                          <input className="form-control" id="email" type="email" value= {this.state.email}  onChange={this.handleChangeInput}  name="email" placeholder="Your Email *" required="required" data-validation-required-message="Please enter your email address."/>
                            <p className="help-block text-danger"></p>
                          </div>
-
+                         <div className="form-group">
+                           <input className="form-control" value= {this.state.password}  onChange={this.handleChangeInput}  name="password" id="phone" type="tel" placeholder="Your Password *" required="required" data-validation-required-message="Please enter your password number."/>
+                           <p className="help-block text-danger"></p>
+                         </div>
                          <div className="form-group">
                            <input className="form-control" value= {this.state.location}  onChange={this.handleChangeInput}  name="location" id="name" type="text" placeholder="Your Locationn  *" required="required" data-validation-required-message="Please enter your Locaton."/>
                    <p className="help-block text-danger"></p>
                          </div>
-             
                        </div>
-                       
-                       
-                     
                        <div className="clearfix"></div>
                        <div className="col-lg-12 text-center">
                          <div id="success"></div>
-                         <button id=" join us " className="btn btn-primary btn-xl text-uppercase" type="submit">join us</button>
+                         <button id=" join us " onClick={this.signup} className="btn btn-primary btn-xl text-uppercase" type="submit">join us</button>
                        </div>
                      </div>
                    </form>
@@ -91,6 +81,4 @@ signup = (e)=>{
     )
 }
 }
-
-
 export default Signuporg;

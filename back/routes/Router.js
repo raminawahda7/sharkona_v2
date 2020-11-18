@@ -5,6 +5,7 @@ const signClient= require('../controller/clientController');
 const signCompany= require('../controller/companyController');
 const event= require('../controller/eventController');
 const auth = require("../controller/auth")
+const book = require('../controller/bookController')
 
 
 
@@ -14,17 +15,21 @@ router.post('/signinClient' ,signClient.signin);
 router.post('/clientlogout' ,signClient.clientlogout);
 
 
+
 router.post('/signupCompany' ,signCompany.signup);
 router.post('/signinCompany' ,signCompany.signin);
 router.post('/companylogout' ,signCompany.companylogout);
 
 
-router.post('/addEvent' ,event.addEvent);
-router.delete('/deleteEvent/:id' ,event.deleteEvent);
-router.delete('/delete' , event.delete);
+router.post('/addEvent' ,auth,event.addEvent);
+router.delete('/deleteEvent/:id' ,auth,event.deleteEvent);
+router.delete('/delete' ,auth, event.delete);
 router.get('/retrieveEvent', event.retrieveEvent)
 router.get('/retrieveOneEvent/:id', event.retrieveOneEvent)
-router.put('/updateEvent/:id', event.updateEvent)
+router.put('/updateEvent/:id',auth, event.updateEvent)
+
+
+router.post('/bookEvent',book.bookEvent)
 
 
 

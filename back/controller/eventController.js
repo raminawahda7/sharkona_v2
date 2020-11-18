@@ -1,10 +1,10 @@
 const Event = require('../model/eventSchema').Event;
-const auth = require ("./auth")
-
+const auth = require ("./auth");
+const Company = require('../model/companySchema').Company;
 
 //this signup method for post requeset from client to save data in database 
 exports.addEvent = async (req, res) => {
-
+  
   //make make new event in mongoDB 
   const event = new Event({
     name: req.body.name,

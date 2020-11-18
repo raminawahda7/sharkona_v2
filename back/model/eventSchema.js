@@ -11,11 +11,11 @@ const eventSchema = mongoose.Schema({
         max : 255
     },
     startDate:{
-        type:Number,
+        type:String,
         required:true,
     },
     endDate:{
-        type:Number,
+        type:String,
         required:true
     },
     location:{
