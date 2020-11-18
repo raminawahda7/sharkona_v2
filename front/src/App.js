@@ -15,6 +15,7 @@ class App extends Component {
   state = {
     belal:{name:"belal",age:"2555"}
   } 
+
   render(){
     
     return (
@@ -23,13 +24,14 @@ class App extends Component {
         <BrowserRouter>
           <Nav />
           <Switch>
-          <Route exact path={"/"} component={Header}></Route>
-          <Route exact path={"/login"} component={Login}></Route>
-          <Route  path={"/event"} component={Event}></Route>
-          <Route  path={"/signup"} component={Signup}></Route>
-          <Route  path={"/signuporg"} component={Signuporg}></Route>
-          <Route  path={"/about"} component={About}></Route>
-          {/* <Route  path = {"/event"} component={Event}></Route> */}
+          <Route exact path={"/"}  render={ () => ( <Header belal={this.state.belal} /> )  }/>
+          <Route exact path={"/login"}  render={ () => ( <Login  /> )  }/>
+          <Route exact path={"/event"}  render={ () => ( <Event  /> )  }/>
+          <Route exact path={"/signup"}  render={ () => ( <Signup  /> )  }/>
+          <Route exact path={"/signuporg"}  render={ () => ( <Signuporg  /> )}/>
+          <Route exact path={"/signuporg"}  render={ () => ( <About  /> )}/>
+
+      
         </Switch>
         <Footer />
                 

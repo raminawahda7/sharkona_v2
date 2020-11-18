@@ -5,8 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import Add from "./components/addevent"
 class Header extends Component {
     render(){
-        // const belal = this.props.belal;
-        // console.log(belal)
+         const belal = this.props.belal;
+         console.log(belal)
+
         return (
           <div>
               <header className="masthead">
@@ -19,6 +20,7 @@ class Header extends Component {
                     </div>
                 </div>
             </header>
+           
        </div>
         )
     }
