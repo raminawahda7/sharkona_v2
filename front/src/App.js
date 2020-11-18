@@ -6,7 +6,7 @@ import Header from './components/Home/Header';
 import Signup from "./components/signup"
 import Signuporg from "./components/signuporg"
 import Event from "./components/Home/event/event"
-import Login from './components/login';
+import Login from './components/LogIn';
 import About from './components/about';
 import Footer from './components/Home/Footer';
 
@@ -16,12 +16,7 @@ class App extends Component {
     belal:{name:"belal",age:"2555"}
   } 
   render(){
-
-        // <div>
-        // <Header name={this.state.belal} />
-        // <Login /> 
-        // </div>
-
+    
     return (
       <div className="App">
         <div> 
