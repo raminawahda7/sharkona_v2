@@ -3,7 +3,7 @@ import './App.css';
 import {BrowserRouter,Route,Switch} from "react-router-dom"
 import Nav from './components/Home/Nav';
 import Header from './components/Home/Header';
-import Signup from "./components/ClientSignUp"
+import Signup from "./components/signup"
 import Signuporg from "./components/signuporg"
 import Event from "./components/Home/event/event"
 import Login from './components/LogIn';
