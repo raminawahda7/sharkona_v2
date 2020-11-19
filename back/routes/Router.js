@@ -20,7 +20,7 @@ router.get('/auth',auth ,signClient.auth);
 
 
 router.post('/signupCompany' ,signCompany.signup);
-router.post('/signinCompany' ,signCompany.signin);
+router.post('/signinCompany' ,auth,signCompany.signin);
 router.post('/companylogout' ,signCompany.companylogout);
 
 

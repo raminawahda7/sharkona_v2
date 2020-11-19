@@ -60,7 +60,7 @@ if (isEmailExsistForCompany) return res.status(400).send("email already exist in
 }
 
 exports.signin =  async (req, res) => {
-  console.log(req.body)
+  console.log('req',req.body)
   //res.send("sing in page");
 //to check if data from user is correct or not
 //   const {error} = loginSchema.validate(req.body);

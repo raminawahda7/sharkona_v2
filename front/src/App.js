@@ -61,7 +61,7 @@ class App extends Component {
           <Nav />
           <Switch>
           <Route exact path={"/"}  render={ () => ( <Header belal={this.state.belal} /> )  }/>
-          <Route exact path={"/login"}  render={ () =>  <Login/>  }/>
+          <Route exact path={"/login"}  render={ () => !userId ?  <Login userId={this.state.userId} /> :  <Redirect to='/event'/> }/>
           <Route exact path={"/event"}  render={ () => ( <Event  /> )  }/>
           <Route exact path={"/signup"}  render={ () => ( <Signup  /> )  }/>
           <Route exact path={"/signuporg"}  render={ () => ( <Signuporg  /> )}/>
@@ -69,10 +69,8 @@ class App extends Component {
           <Route exact path={"/event/EventForm"}  render={ () =>  
             isOrg ? 
           <EventForm  /> : <Redirect to='/signuporg'/> }/>
-
-      
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
                 
         </BrowserRouter>
           </div>

@@ -16,11 +16,15 @@ class Login extends Component {
     this.handleChangeInput=this.handleChangeInput.bind(this)
 
   }
-  handleChangeInput(e) {
-    this.setState({ [e.target.name]: e.target.value })
+  handleChangeInput = (e) => {
+    let {name,value} = e.target ;
+    this.setState({ [name]:value })
+
+    console.log(value)
   }
 
   handelOnClick = async (e) => {
+    console.log(this.state)
     e.preventDefault();
     // console.log("ourCLient", this.state)
     axios.post('/signinClient' , this.state)
@@ -28,20 +32,14 @@ class Login extends Component {
         console.log(response)
         localStorage.setItem('login',response.data.token )
         localStorage.setItem('userId',response.data.userId )
+        window.location.reload()
       })
     }
     
-  // handelOnclick =async (e)=>{
-  //   e.preventDefault();
-  //   // console.log("ourCLient", this.state)
-  //   axios.post('/signinClient' , this.state)
-  //     .then((response)=>{
-        
-  //       console.log(this.state.email)
-  //     })
-  // }
+  
   render() {
-
+    const { email,password } = this.state
+    console.log(this.props.userId)
     return (
       <section className="page-section" id="contact">
         <div className="container">
@@ -58,14 +56,14 @@ class Login extends Component {
                   <div className="col-md-6">
 
                     <div className="form-group">
-                      <input  onChange={this.handleChangeInput} name='email' className="form-control" id="email" type="email" placeholder="Your Email *" required="required" data-validation-required-message="Please enter your email address." />
+                      <input  onChange={this.handleChangeInput} name='email'  value={email} className="form-control" id="email" type="email" placeholder="Your Email *" required="required" data-validation-required-message="Please enter your email address." />
                       <p className="help-block text-danger"></p>
                     </div>
 
                   </div>
                   <div className="col-md-6">
                     <div className="form-group">
-                      <input onChange={this.handleChangeInput}  name='password' className="form-control" id="password" type="password" placeholder="Your Password *" required="required" data-validation-required-message="Please enter your Password." />
+                      <input onChange={this.handleChangeInput}  value={password} name='password' className="form-control" id="password" type="password" placeholder="Your Password *" required="required" data-validation-required-message="Please enter your Password." />
                       <p className="help-block text-danger"></p>
                     </div>
                   </div>
@@ -76,8 +74,7 @@ class Login extends Component {
                   <div className="clearfix"></div>
                   <div className="col-lg-12 text-center">
                     <div id="success"></div>
-                    <button onClick={this.handelOnClick} id=" join us " className="btn btn-primary btn-xl text-uppercase" type="submit"><NavLink className="nav-link js-scroll-trigger" to="/event">Join Us </NavLink></button>
-                    {/* <button onClick={this.handelOnclick} id=" know client " className="btn btn-primary btn-xl text-uppercase" type="submit">know client</button> */}
+                    <button onClick={this.handelOnClick} id=" join us " class="btn btn-primary btn-xl text-uppercase" type="submit">Join Us</button>
                   </div>
                 
                     
