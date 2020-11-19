@@ -1,6 +1,6 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
-import {BrowserRouter,Route,Switch,Redirect} from "react-router-dom"
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"
 import Nav from './components/Home/Nav';
 import Header from './components/Home/Header';
 import Signup from "./components/signup"
@@ -16,9 +16,9 @@ class App extends Component {
   state = {
     name: '',
     email: '',
-    isOrg : localStorage.getItem('isOrg'),
-    userId : localStorage.getItem('userId')
-}
+    orgId: localStorage.getItem('orgId'),
+    userId: localStorage.getItem('userId')
+  }
 
   componentDidMount = () => {
     // console.log(localStorage.getItem('login'))
@@ -34,53 +34,45 @@ class App extends Component {
       .then(response => response.json())
       .then(data => {
         console.log(data)
-        if(data.isOrg){
-          console.log(data.isOrg)
-          localStorage.setItem('isOrg' , data.isOrg)
-          this.setState({ name: data.name, email: data.email , isOrg:data.isOrg})
-        }else{
-          localStorage.removeItem('isOrg')
-          this.setState({ name: data.name, email: data.email , isOrg:data.isOrg})
-        }
-        
+        this.setState({ name: data.name, email: data.email })
         // console.log(this.state.isOrg)
       })
   }
-  
 
 
 
 
-  render(){
-    const { userId,isOrg } = this.state
+
+  render() {
+    const { userId, orgId } = this.state
     // console.log(name)
     return (
       <div className="App">
-        <div> 
-        <BrowserRouter>
-          <Nav />
-          <Switch>
-          <Route exact path={"/"}  render={ () => ( <Header belal={this.state.belal} /> )  }/>
-          <Route exact path={"/login"}  render={ () => !userId ?  <Login userId={this.state.userId} /> :  <Redirect to='/event'/> }/>
-          <Route exact path={"/event"}  render={ () => ( <Event  /> )  }/>
-          <Route exact path={"/signup"}  render={ () => ( <Signup  /> )  }/>
-          <Route exact path={"/signuporg"}  render={ () => ( <Signuporg  /> )}/>
-          <Route exact path={"/about"}  render={ () => ( <About  /> )}/>
-          <Route exact path={"/event/EventForm"}  render={ () =>  
-            isOrg ? 
-          <EventForm  /> : <Redirect to='/signuporg'/> }/>
-        </Switch>
-        {/* <Footer /> */}
-                
-        </BrowserRouter>
-          </div>
-  
-        </div> 
+        <div>
+          <BrowserRouter>
+            <Nav />
+            <Switch>
+              <Route exact path={"/"} render={() => (<Header belal={this.state.belal} />)} />
+              <Route exact path={"/login"} render={() => (!userId && !orgId) ? <Login /> : <Redirect to='/event' />} />
+              <Route exact path={"/event"} render={() => (<Event />)} />
+              <Route exact path={"/signup"} render={() => (<Signup />)} />
+              <Route exact path={"/signuporg"} render={() => (<Signuporg />)} />
+              <Route exact path={"/about"} render={() => (<About />)} />
+              <Route exact path={"/event/EventForm"} render={() =>
+                orgId ?
+                  <EventForm orgId={orgId} /> : <Redirect to='/signuporg' />} />
+            </Switch>
+            {/* <Footer /> */}
+
+          </BrowserRouter>
+        </div>
+
+      </div>
     )
   }
 
-  
+
 }
 
-  
+
 export default App;
