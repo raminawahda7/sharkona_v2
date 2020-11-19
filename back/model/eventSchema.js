@@ -29,9 +29,10 @@ const eventSchema = mongoose.Schema({
     phoneNumber:{
         type : String
     },
-    clients :[{
-        type : mongoose.Schema.Types.ObjectId ,
-         ref:"clientSchema"}]
+    company: {
+        type : mongoose.Schema.Types.ObjectId,
+        ref: 'company'
+    }
 })
 
 const Event = mongoose.model('event', eventSchema);
