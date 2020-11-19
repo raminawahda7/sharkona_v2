@@ -3,6 +3,7 @@ import axios from 'axios'
 import { NavLink } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 const token =''
 class Login extends Component {
   constructor(props) {
@@ -25,6 +26,8 @@ class Login extends Component {
     axios.post('/signinClient' , this.state)
       .then((response)=>{
         console.log(response)
+        localStorage.setItem('login',response.data.token )
+        localStorage.setItem('userId',response.data.userId )
       })
     }
     
@@ -73,7 +76,7 @@ class Login extends Component {
                   <div className="clearfix"></div>
                   <div className="col-lg-12 text-center">
                     <div id="success"></div>
-                    <button onClick={this.handelOnClick} id=" join us " className="btn btn-primary btn-xl text-uppercase" type="submit">join us</button>
+                    <button onClick={this.handelOnClick} id=" join us " className="btn btn-primary btn-xl text-uppercase" type="submit"><NavLink className="nav-link js-scroll-trigger" to="/event">Join Us </NavLink></button>
                     {/* <button onClick={this.handelOnclick} id=" know client " className="btn btn-primary btn-xl text-uppercase" type="submit">know client</button> */}
                   </div>
                 

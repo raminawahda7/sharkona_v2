@@ -14,6 +14,9 @@ router.post('/signupClient' ,signClient.signup);
 router.post('/signinClient' ,signClient.signin);
 router.post('/clientlogout' ,signClient.clientlogout);
 
+router.get('/auth',auth ,signClient.auth);
+
+
 
 
 router.post('/signupCompany' ,signCompany.signup);
@@ -22,8 +25,8 @@ router.post('/companylogout' ,signCompany.companylogout);
 
 
 router.post('/addEvent' ,auth,event.addEvent);
-router.delete('/deleteEvent/:id' ,auth,event.deleteEvent);
-router.delete('/delete' ,auth, event.delete);
+router.delete('/deleteEvent/:id',auth,event.deleteEvent);
+router.delete('/delete' ,auth,event.delete);
 router.get('/retrieveEvent', event.retrieveEvent)
 router.get('/retrieveOneEvent/:id', event.retrieveOneEvent)
 router.put('/updateEvent/:id',auth, event.updateEvent)

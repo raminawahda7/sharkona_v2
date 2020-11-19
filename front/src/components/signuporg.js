@@ -10,7 +10,7 @@ class Signuporg extends Component {
     password: '',
     email: '',
     location: '',
-    phoneNumber: '',
+    phoneNumber: ''
 }
 handleChangeInput = (e) => {
   let {name,value} = e.target ;
@@ -21,6 +21,9 @@ signup = (e)=>{
   e.preventDefault();
   axios.post("/signupCompany",this.state)
     .then((response)=>{
+      localStorage.setItem('isOrg',response.data.token )
+      localStorage.setItem('login',response.data.token )
+      localStorage.setItem('userId',response.data.userId )
     console.log(response)
       })
       this.setState({

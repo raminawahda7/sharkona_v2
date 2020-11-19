@@ -23,6 +23,10 @@ const clientSchema = mongoose.Schema({
 
     },phoneNumber:{
         type : String
+    },
+    
+  isOrg:{
+      type:Boolean
     }
 
 })

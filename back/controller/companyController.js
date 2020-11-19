@@ -43,6 +43,7 @@ if (isEmailExsistforClient) return res.status(400).send("email already exist in 
     password: hashPassword,
     location:req.body.location,
     phoneNumber:req.body.phoneNumber,
+    isOrg:true,
     events:[]
   });
   //console.log(company)
@@ -82,4 +83,15 @@ exports.signin =  async (req, res) => {
 exports.companylogout =  (req, res) => {
   res.cookie('login', '')
   res.status(200).send(req.company);
+}
+
+exports.auth =  (req,res) => {
+  res.json({
+      id : req.client._id,
+      name : req.client.name,
+      email: req.client.email,
+      org: req.client.org,
+      isOrg:req.client.isOrg,
+      success: true
+  })
 }

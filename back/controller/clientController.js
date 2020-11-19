@@ -40,6 +40,7 @@ if (isEmailExsistForCompany) return res.status(400).send("email already exist in
     email: req.body.email,
     password: hashPassword,
     location:req.body.location,
+    isOrg:false,
     phoneNumber:req.body.phoneNumber
   });
 
@@ -59,23 +60,66 @@ if (isEmailExsistForCompany) return res.status(400).send("email already exist in
 }
 
 exports.signin =  async (req, res) => {
+  console.log(req.body)
   //res.send("sing in page");
 //to check if data from user is correct or not
-  const {error} = loginSchema.validate(req.body);
-  if(error) res.status(400).send(error.details[0].message);
+//   const {error} = loginSchema.validate(req.body);
+//   if(error) res.status(400).send(error.details[0].message);
 //check if email exist or not in database collection
-  const client = await Client.findOne({email:req.body.email});
-  console.log(client);
-  if( !client) return res.status(400).send("email dose not exist");
+
+  const client = await Client.findOne({email:req.body.email})
+  // console.log('user',client);
+
+  if( !client) {
+
+    const company = await Company.findOne({email:req.body.email})
+    // console.log('organizer >>',company);
+    if( !company) return res.status(400).send("email dose not exist");
+  
+    const validPassword = await bcrypt.compare(req.body.password,company.password);
+    console.log(validPassword)
+    if( !validPassword) return res.status(400).send("password is wrong");
+  
+    const token = await jwt.sign({_id:company._id},process.env.TOKEN);
+    // console.log('token >>',token)
+   return res.header("login",token).json({token, userId:company._id});
+  }
+
 
   const validPassword = await bcrypt.compare(req.body.password,client.password);
   if( !validPassword) return res.status(400).send("password is wrong");
 
-  const token = jwt.sign({_id:client._id},process.env.TOKEN);
+  const token = await jwt.sign({_id:client._id},process.env.TOKEN);
   //console.log(token);
-  res.header("login",token).send(token);
+  res.header("login",token).json({token, userId:client._id});
+
+
+
+  // const client = await Client.findOne({email:req.body.email})
+  // console.log(client);
+  // if( !client) return res.status(400).send("email dose not exist");
+
+  // const validPassword = await bcrypt.compare(req.body.password,client.password);
+  // if( !validPassword) return res.status(400).send("password is wrong");
+
+  // const token = jwt.sign({_id:client._id},process.env.TOKEN);
+  //console.log(token);
+
 }
 exports.clientlogout =  (req, res) => {
   res.cookie('login', '')
   res.status(200).send(req.client);
 }
+
+
+exports.auth =  (req,res) => {
+  res.json({
+      id : req.client._id,
+      name : req.client.name,
+      email: req.client.email,
+      org: req.client.org,
+      isOrg:req.client.isOrg,
+      success: true
+  })
+}
+

@@ -21,6 +21,9 @@ class Signup extends Component {
         axios.post("/signupClient",this.state)
           .then((response)=>{
           console.log(response)
+          localStorage.setItem('login',response.data.token )
+          localStorage.setItem('userId',response.data.userId )
+
             })
             this.setState({
               name: '',
