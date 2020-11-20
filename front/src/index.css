@@ -19,3 +19,51 @@ code {
 #contact{
   height: 120vh;
 }
+
+.location{
+  width: 600px;
+  margin-left: 275px;
+
+
+}
+
+.col-md-6-phone{
+  width: 600px !important;
+  margin-left: 275px !important;
+
+}
+
+.eventPage{
+  background-image:url(./assets/img/main4-bg.jpg);
+}
+
+
+
+.wellcom{
+  font-size: 15px !important;
+  color: rgba(249, 252, 87, 0.719) !important;
+  font-family:serif !important;
+  
+}
+
+.forEvent{
+  color: white !important;
+  font-size:40px !important ;
+  margin-top:0 !important ;
+  margin-bottom:15px !important}
+
+  .pEvent{
+    font-size: 15px !important;
+    color: rgb(105, 13, 105) !important;
+    font-family:cursive !important;
+  }
+
+.clockStyle{
+  width: 35px !important;
+  height: 35px !important;
+}
+
+.cardstyle{
+  width: 400px !important;
+  height: 500px !important;
+}

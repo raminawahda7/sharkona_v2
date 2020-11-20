@@ -43,15 +43,17 @@ class Signuporg extends Component {
         <div className="container">
           <div className="row">
             <div className="col-lg-12 text-center">
-              <h2 className="section-heading text-uppercase"> sign up asorganizer </h2>
-              <h3 className="section-subheading text-muted">let's start the magic !.</h3>
+              <h2 className="section-heading text-uppercase"> sign up as organizer </h2>
+              <h3 className="wellcom">we will be happy to meet you ♥</h3><br /><br />
             </div>
           </div>
           <div className="row">
             <div className="col-sm-12">
               <form id="contactForm" name="sentMessage" novalidate="novalidate">
                 <div className="row">
+
                   <div className="col-md-6">
+
                     <div className="form-group">
                       <input className="form-control" value={this.state.name} onChange={this.handleChangeInput} name="name" id="email" type="text" placeholder="Your Company Name *" required="required" data-validation-required-message="Please enter your Company Name ." />
                       <p className="help-block text-danger"></p>
@@ -62,26 +64,29 @@ class Signuporg extends Component {
                       <p className="help-block text-danger"></p>
                     </div>
 
-
                   </div>
                   <div className="col-md-6">
+
                     <div className="form-group">
                       <input className="form-control" id="email" type="email" value={this.state.email} onChange={this.handleChangeInput} name="email" placeholder="Your Email *" required="required" data-validation-required-message="Please enter your email address." />
                       <p className="help-block text-danger"></p>
                     </div>
-                    <div className="form-group">
-                      <input className="form-control" value={this.state.password} onChange={this.handleChangeInput} name="password" id="phone" type="tel" placeholder="Your Password *" required="required" data-validation-required-message="Please enter your password number." />
-                      <p className="help-block text-danger"></p>
-                    </div>
 
                     <div className="form-group">
-                      <input className="form-control" value={this.state.location} onChange={this.handleChangeInput} name="location" id="name" type="text" placeholder="Your Locationn  *" required="required" data-validation-required-message="Please enter your Locaton." />
+                      <input className="form-control" value={this.state.password} onChange={this.handleChangeInput} name="password" id="phone" type="Password" placeholder="Your Password *" required="required" data-validation-required-message="Please enter your password number." />
                       <p className="help-block text-danger"></p>
                     </div>
 
                   </div>
 
+                  <div className="location">
 
+                    <div className="form-group">
+                      <input className="form-control" value={this.state.location} onChange={this.handleChangeInput} name="location" id="OrgLocation" type="text" placeholder="Your Locationn  *" required="required" data-validation-required-message="Please enter your Locaton." />
+                      <p className="help-block text-danger"></p>
+                    </div>
+
+                  </div>
 
                   <div className="clearfix"></div>
                   <div className="col-lg-12 text-center">

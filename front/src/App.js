@@ -45,6 +45,8 @@ class App extends Component {
 
   render() {
     const { userId, orgId } = this.state
+    // const userId = this.state.userId
+    // const orgId = this.state.orgId
     // console.log(name)
     return (
       <div className="App">
