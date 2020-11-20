@@ -64,13 +64,10 @@ redux-thunk: ^2.1.0 |
 # Screenshots of this project
 
 User visit public and Home page
-![User visit public and Home page](http://i.imgur.com/ORCGHHY.png)
+![User visit public and Home page](https://i.imgur.com/16vtZX5.png)
 
 User can sign in or sign up
-![User can sign in or sign up](http://i.imgur.com/rrmbU5I.png)
-
-After signing in user can go to account route and make request to token-protected API endpoint
-![After signing in user can go to account route](http://i.imgur.com/FzLB51u.png)
+![User can sign in or sign up](https://i.imgur.com/fIj2HQU.png)
 
 
 ## BUGs or comments
