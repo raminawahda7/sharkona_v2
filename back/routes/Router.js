@@ -24,7 +24,8 @@ router.post('/signinCompany', auth, signCompany.signin);
 router.post('/companylogout', signCompany.companylogout);
 
 
-router.post('/addEvent', book.createEvent);
+router.post('/addEvent', book.createEvent)
+router.post('/orgEvents', book.orgEvents)
 router.delete('/deleteEvent/:id', auth, event.deleteEvent);
 router.delete('/delete', auth, event.delete);
 router.get('/retrieveEvent', event.retrieveEvent)

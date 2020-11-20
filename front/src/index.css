@@ -33,11 +33,29 @@ code {
 
 }
 
+
 .eventPage{
-  background-image:url(./assets/img/main4-bg.jpg);
+  /* background-image:url(./assets/img/main4-bg.jpg); */
+  /* background-attachment: fixed !important;  */
+  /* background-color: rgb(166, 35, 170);
+  height: auto; */
+
+  background: url(./assets/img/main4-bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: flex !important;
+  margin: auto !important;
+};
+
+.row{
+  justify-content: center !important;
 }
 
-
+li{
+  list-style: none;
+}
 
 .wellcom{
   font-size: 15px !important;
@@ -54,8 +72,8 @@ code {
 
   .pEvent{
     font-size: 15px !important;
-    color: rgb(105, 13, 105) !important;
-    font-family:cursive !important;
+    color: rgb(10, 10, 10) !important;
+    /* font-family:cursive !important; */
   }
 
 .clockStyle{
@@ -67,3 +85,8 @@ code {
   width: 400px !important;
   height: 500px !important;
 }
+/* #cardEv{
+  width: 350 !important;
+  height: 350px !important;
+
+} */

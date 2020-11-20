@@ -56,7 +56,7 @@ class App extends Component {
             <Switch>
               <Route exact path={"/"} render={() => (<Header belal={this.state.belal} />)} />
               <Route exact path={"/login"} render={() => (!userId && !orgId) ? <Login /> : <Redirect to='/event' />} />
-              <Route exact path={"/event"} render={() => (<Event />)} />
+              <Route exact path={"/event"} render={() => (<Event orgId={orgId} userId={userId} />)} />
               <Route exact path={"/signup"} render={() => (<Signup />)} />
               <Route exact path={"/signuporg"} render={() => (<Signuporg />)} />
               <Route exact path={"/about"} render={() => (<About />)} />
