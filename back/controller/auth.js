@@ -4,7 +4,7 @@ const Company = require('../model/companySchema').Company;
 
 module.exports  =  async (req, res, next)=> {
     const token  = req.header("login")
-    console.log(token)
+    // console.log(token)
 
     if (!token) {
         return res.status(401).send('accses faild ')
@@ -12,7 +12,7 @@ module.exports  =  async (req, res, next)=> {
 
     try {
         const verified = jwt.verify(token, process.env.TOKEN)
-        console.log(verified)
+        // console.log(verified)
         const client = await Client.findOne({_id: verified._id})
         if(!client){
             const company = await Company.findOne({_id: verified._id})
@@ -20,7 +20,7 @@ module.exports  =  async (req, res, next)=> {
             return next()
         }
          req.client = client;
-         console.log(client);
+        //  console.log(client);
         // res.header('login', token)dt8
         next()
     }

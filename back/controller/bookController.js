@@ -37,6 +37,33 @@ exports.bookEvent = (async (req, res) => {
       res.status(404).json({ success: false })
    }
 
+})
 
+
+exports.orgEvents = (async (req, res) => {
+   //const client = 
+   console.log(req.body) // orgId 
+   try {
+      const events = await Event.find({ 'orgId': req.body.orgId })
+      return res.json(events)
+
+   } catch {
+      res.status(404).json({ success: false })
+   }
 
 })
+
+exports.clientEvents = (async (req, res) => {
+   //const client = 
+   console.log(req.body) // userId and eventId
+   try {
+      const user = await User.findOne({ 'userId': req.body.userId }).populate('event')
+      const events = user.event
+     
+      return res.json(events)
+   } catch {
+      res.status(404).json({ success: false })
+   }
+
+})
+
