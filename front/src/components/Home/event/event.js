@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from "axios"
 
 import Card from './eventCard'
+import CardOrg from './eventCardOrg'
 
 
 class Event extends Component {
@@ -17,7 +19,6 @@ class Event extends Component {
   }
 
   componentDidMount = () => {
-    // this.getEvents()
     // this.getOrgEvents({ orgId: this.props.orgId })
 
     if (this.props.orgId) {
@@ -28,6 +29,8 @@ class Event extends Component {
 
     else if (this.props.userId) {
       this.getOrgEvents({ userId: this.props.userId })
+      this.getEvents()
+
     }
 
     else {
@@ -57,7 +60,6 @@ class Event extends Component {
     fetch('/clientEvents', requestOptions)
       .then(response => response.json())
       .then(data => this.setState({ userEvents: data }));
-
   }
 
 
@@ -75,6 +77,16 @@ class Event extends Component {
       })
   }
 
+  handelOnClick = async (id, userId) => {
+    // e.preventDefault();
+    // console.log("ourCLient", this.state)
+    axios.post('/bookEvent', { _id: id, userId: userId })
+      .then((response) => {
+        console.log(response)
+
+      })
+  }
+
   render() {
     // const events = [{
     //   title: "Jawwal Event",
@@ -87,13 +99,13 @@ class Event extends Component {
     // }]
 
     const { events, orgEvents, userEvents } = this.state
-    var specEvents;
+    var specEvents, allEvents;
     console.log(events, "213ws")
 
     if (this.props.orgId) {
       console.log("here org")
       specEvents = orgEvents.map(({ name, startDate, startTime, endDate, endTime, location, phoneNumber }, index) =>
-        <Card title={name} sDate={startDate} sTime={startTime} eDate={endDate} eTime={endTime} location={location} phoneNumber={phoneNumber} key={index} />
+        <CardOrg title={name} sDate={startDate} sTime={startTime} eDate={endDate} eTime={endTime} location={location} phoneNumber={phoneNumber} key={index} />
       )
     } else if (this.props.userId) {
       console.log("here user")
@@ -101,12 +113,17 @@ class Event extends Component {
       specEvents = userEvents.map(({ name, startDate, startTime, endDate, endTime, location, phoneNumber }, index) =>
         <Card title={name} sDate={startDate} sTime={startTime} eDate={endDate} eTime={endTime} location={location} phoneNumber={phoneNumber} key={index} />
       )
+
+      allEvents = events.map(({ name, startDate, startTime, endDate, endTime, location, phoneNumber }, index) =>
+        <Card title={name} sDate={startDate} sTime={startTime} eDate={endDate} eTime={endTime} location={location} phoneNumber={phoneNumber} key={index} />
+      )
+
+
     }
     else {
-      console.log(events, "nothing")
 
-      specEvents = events.map(({ name, startDate, startTime, endDate, endTime, location, phoneNumber }, index) =>
-        <Card title={name} sDate={startDate} sTime={startTime} eDate={endDate} eTime={endTime} location={location} phoneNumber={phoneNumber} key={index} />
+      specEvents = events.map(({ _id, name, startDate, startTime, endDate, endTime, location, phoneNumber }, index) =>
+        <Card _id={_id} userId={this.props.userId} handelOnClick={this.handelOnClick} title={name} sDate={startDate} sTime={startTime} eDate={endDate} eTime={endTime} location={location} phoneNumber={phoneNumber} key={index} />
       )
     }
 
@@ -127,6 +144,13 @@ class Event extends Component {
               //   <Card title={name} sDate={startDate} sTime={startTime} eDate={endDate} eTime={endTime} location={location} phoneNumber={phoneNumber} key={index} />
               // )
               specEvents
+            }
+
+          </div>
+
+          <div className="row" id="eventsCard">
+            {
+              allEvents
             }
 
           </div>
