@@ -8,17 +8,34 @@ class Event extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      events: [],
-      orgEvents: [],
+      events: []
+      ,
+      orgEvents: []
+      ,
       userEvents: []
     }
   }
 
   componentDidMount = () => {
-    this.getEvents()
-    this.getOrgEvents({ orgId: this.props.orgId })
-  }
+    // this.getEvents()
+    // this.getOrgEvents({ orgId: this.props.orgId })
 
+    if (this.props.orgId) {
+      this.getOrgEvents({ orgId: this.props.orgId })
+
+      console.log("here orgid")
+    }
+
+    else if (this.props.userId) {
+      this.getOrgEvents({ userId: this.props.userId })
+    }
+
+    else {
+      this.getEvents()
+    }
+
+  }
+  // org events
   getOrgEvents = (obj) => {
     const requestOptions = {
       method: 'POST',
@@ -28,8 +45,23 @@ class Event extends Component {
     fetch('/orgEvents', requestOptions)
       .then(response => response.json())
       .then(data => this.setState({ orgEvents: data }));
+
+  }
+  //user events 
+  getUserEvents = (obj) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(obj)
+    };
+    fetch('/clientEvents', requestOptions)
+      .then(response => response.json())
+      .then(data => this.setState({ userEvents: data }));
+
   }
 
+
+  //all events
   getEvents = () => {
     const requestOptions = {
       method: 'GET',
@@ -39,7 +71,7 @@ class Event extends Component {
       .then(response => response.json())
       .then(data => {
         this.setState({ events: data })
-        console.log(data)
+        // console.log(this.state.events)
       })
   }
 
@@ -54,10 +86,34 @@ class Event extends Component {
     //   phoneNumber: "0599587398"
     // }]
 
-    const { events } = this.state
+    const { events, orgEvents, userEvents } = this.state
+    var specEvents;
+    console.log(events, "213ws")
+
+    if (this.props.orgId) {
+      console.log("here org")
+      specEvents = orgEvents.map(({ name, startDate, startTime, endDate, endTime, location, phoneNumber }, index) =>
+        <Card title={name} sDate={startDate} sTime={startTime} eDate={endDate} eTime={endTime} location={location} phoneNumber={phoneNumber} key={index} />
+      )
+    } else if (this.props.userId) {
+      console.log("here user")
+
+      specEvents = userEvents.map(({ name, startDate, startTime, endDate, endTime, location, phoneNumber }, index) =>
+        <Card title={name} sDate={startDate} sTime={startTime} eDate={endDate} eTime={endTime} location={location} phoneNumber={phoneNumber} key={index} />
+      )
+    }
+    else {
+      console.log(events, "nothing")
+
+      specEvents = events.map(({ name, startDate, startTime, endDate, endTime, location, phoneNumber }, index) =>
+        <Card title={name} sDate={startDate} sTime={startTime} eDate={endDate} eTime={endTime} location={location} phoneNumber={phoneNumber} key={index} />
+      )
+    }
+
+    // console.log(specEvents, "Asdsds")
 
     return (
-      <div className="eventPage page-section ">
+      <div className="eventPage page-section " >
         <div className="container ">
           <div className="row" >
             <div className="col-lg-12 text-center">
@@ -67,9 +123,10 @@ class Event extends Component {
           </div>
           <div className="row" id="eventsCard">
             {
-              events.map(({ name, startDate, startTime, endDate, endTime, location, phoneNumber }, index) =>
-                <Card title={name} sDate={startDate} sTime={startTime} eDate={endDate} eTime={endTime} location={location} phoneNumber={phoneNumber} key={index} />
-              )
+              // events.map(({ name, startDate, startTime, endDate, endTime, location, phoneNumber }, index) =>
+              //   <Card title={name} sDate={startDate} sTime={startTime} eDate={endDate} eTime={endTime} location={location} phoneNumber={phoneNumber} key={index} />
+              // )
+              specEvents
             }
 
           </div>
