@@ -3,8 +3,7 @@ import calen from './eventpic/calender.png'
 import book from './eventpic/book.png'
 import clock from './eventpic/clock.png'
 
-const Card = ({ title, sDate, sTime, eDate, eTime, location, phoneNumber, handelOnClick, _id, userId }) => {
-
+const CardOrg = ({ title, sDate, sTime, eDate, eTime, location, phoneNumber }) => {
 
 
     return (
@@ -19,11 +18,16 @@ const Card = ({ title, sDate, sTime, eDate, eTime, location, phoneNumber, handel
                 <li class="list-inline-item" className="pEvent"><i class="fas fa-calendar-check" >  &nbsp; <img className="clockStyle" src={calen} />Start Date:&nbsp;{sDate}</i> &nbsp; <i class="fas fa-calendar-check" > <img className="clockStyle" src={calen} />End Date:&nbsp;{eDate}  &nbsp; </i></li><br />
                 <li class="list-inline-item" className="pEvent"><i class="fas fa-calendar-check" >  &nbsp; Event Location:&nbsp;{location}</i> &nbsp; <i class="fas fa-calendar-check" >Phone Number:&nbsp; {phoneNumber}  &nbsp; </i></li><br />
             </ul>
-            {/* onClick={() => handelOnClick(_id, userId)} */}
-            <button type="button" class="btn btn-warning">  <img className="clockStyle" src={book} />book</button>
+            <div>
+                <button type="button" class="btn btn-warning">   delete</button>&nbsp;&nbsp;
+                <button type="button" class="btn btn-warning">   update</button>
+
+
+            </div>
+
         </div>
     )
 }
 
 
-export default Card
+export default CardOrg

@@ -34,6 +34,8 @@ router.put('/updateEvent/:id', auth, event.updateEvent)
 
 
 router.post('/bookEvent', book.bookEvent)
+router.post('/clientEvents', book.clientEvents)
+
 
 
 
