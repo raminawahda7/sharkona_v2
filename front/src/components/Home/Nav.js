@@ -22,7 +22,7 @@ class Nav extends Component {
                                 <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/signup"> User Sign up</NavLink></li>
                                 <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/signuporg"> Organizer Sign up </NavLink></li>
                                 <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/event">Events </NavLink></li>
-                                <li className="nav-item"><NavLink className="nav-link js-scroll-trigger" to="/about">About</NavLink></li>
+
                                 <li className="nav-item" onClick={() => {
                                     localStorage.removeItem('userId')
                                     localStorage.removeItem('orgId')

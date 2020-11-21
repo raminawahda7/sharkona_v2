@@ -50,7 +50,7 @@ class Login extends Component {
           <div className="row">
             <div className="col-lg-12 text-center">
               <h2 className="section-heading text-uppercase"> Login in </h2>
-              <h3 className="section-subheading text-muted">We miss you a lot !</h3>
+              <h3 className=" wellcom">We miss you a lot !</h3><br /><br />
             </div>
           </div>
           <div className="row">
@@ -67,7 +67,7 @@ class Login extends Component {
                   </div>
                   <div className="col-md-6">
                     <div className="form-group">
-                      <input onChange={this.handleChangeInput} value={password} name='password' className="form-control" id="password" type="password" placeholder="Your Password *" required="required" data-validation-required-message="Please enter your Password." />
+                      <input onChange={this.handleChangeInput} value={password} name='password' className="form-control" id="password" type="password" placeholder="Your Password *" required="required" data-validation-required-message="Please enter your Password." /><br /><br />
                       <p className="help-block text-danger"></p>
                     </div>
                   </div>
@@ -88,7 +88,7 @@ class Login extends Component {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
     )
   }
