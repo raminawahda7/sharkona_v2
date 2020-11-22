@@ -1,10 +1,9 @@
 <h1 align="center">
-:globe_with_meridians: MERN Stack
+🌐 MERN Stack
 </h1>
-> MERN is a fullstack implementation in MongoDB, Expressjs, React, Nodejs.
-
-MERN stack is the idea of using Javascript/Node for fullstack web development.
-
+<p align="center">
+ MERN is a fullstack implementation in MongoDB, Expressjs, React, Nodejs.
+</p>
 ## clone or download
 ```terminal
 $ https://github.com/greenfield-sharkona/sharkona_v2
@@ -53,13 +52,11 @@ Client-side | Server-side
 --- | ---
 axios: ^0.15.3 | bcrypt-nodejs: ^0.0.3
 babel-preset-stage-1: ^6.1.18|body-parser: ^1.15.2
-lodash: ^3.10.1 | cors: ^2.8.1
+lodash: ^3.10.1 | jwt-simple: ^0.5.1
 react: ^16.2.0 | dotenv: ^2.0.0
 react-dom: ^16.2.0 | express: ^4.14.0
-react-redux: ^4.0.0 | jwt-simple: ^0.5.1
 react-router-dom: ^4.2.2 | mongoose: ^4.7.4
-redux: ^3.7.2 | morgan: ^1.7.0
-redux-thunk: ^2.1.0 |
+
 
 # Screenshots of this project
 
