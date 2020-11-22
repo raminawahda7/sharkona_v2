@@ -1,13 +1,29 @@
 <h1 align="center">
-:globe_with_meridians: MERN Stack
+🌐 MERN Stack
 </h1>
-> MERN is a fullstack implementation in MongoDB, Expressjs, React, Nodejs.
+<p align="center">
+MongoDB, Expressjs, React/Redux, Nodejs
+</p>
+
+<p align="center">
+   <a href="https://travis-ci.com/amazingandyyy/mern">
+      <img src="https://travis-ci.com/amazingandyyy/mern.svg?branch=master" />
+   </a>
+   <a href="https://github.com/amazingandyyy/mern/blob/master/LICENSE">
+      <img src="https://img.shields.io/badge/License-MIT-green.svg" />
+   </a>
+   <a href="https://circleci.com/gh/amazingandyyy/mern">
+      <img src="https://circleci.com/gh/amazingandyyy/mern.svg?style=svg" />
+   </a>
+</p>
+
+> MERN is a fullstack implementation in MongoDB, Expressjs, React/Redux, Nodejs.
 
 MERN stack is the idea of using Javascript/Node for fullstack web development.
 
 ## clone or download
 ```terminal
-$ https://github.com/greenfield-sharkona/sharkona_v2
+$ git clone https://github.com/amazingandyyy/mern.git
 $ npm i
 ```
 
@@ -15,10 +31,10 @@ $ npm i
 ```terminal
 LICENSE
 package.json
-back/
+server/
    package.json
    .env (to create .env, check [prepare your secret session])
-front/
+client/
    package.json
 ...
 ```
@@ -30,22 +46,59 @@ front/
 - [Node](https://nodejs.org/en/download/) ^10.0.0
 - [npm](https://nodejs.org/en/download/package-manager/)
 
+notice, you need client and server runs concurrently in different terminal session, in order to make them talk to each other
 
-## Front-side usage(PORT: 3000)
+## Client-side usage(PORT: 3000)
 ```terminal
-$ cd front   // go to front folder
+$ cd client   // go to client folder
 $ npm i       // npm install pacakges
-$ npm start // run it locally
+$ npm run dev // run it locally
+
+// deployment for client app
+$ npm run build // this will compile the react code using webpack and generate a folder called docs in the root level
+$ npm run start // this will run the files in docs, this behavior is exactly the same how gh-pages will run your static site
 ```
 
-## Back-side usage(PORT: 5000)
+## Server-side usage(PORT: 8000)
+
+### Prepare your secret
+
+run the script at the first level:
+
+(You need to add a JWT_SECRET in .env to connect to MongoDB)
+
+```terminal
+// in the root level
+$ echo "JWT_SECRET=YOUR_JWT_SECRET" >> ./server/src/.env
+```
 
 ### Start
 
 ```terminal
-$ cd back   // go to back folder
+$ cd server   // go to server folder
 $ npm i       // npm install pacakges
-$ npm start
+$ npm run dev // run it locally
+$ npm run build // this will build the server code to es5 js codes and generate a dist file
+```
+
+## Deploy Server to [Heroku](https://dashboard.heroku.com/)
+```terminal
+$ npm i -g heroku
+$ heroku login
+...
+$ heroku create
+$ npm run heroku:add <your-super-amazing-heroku-app>
+// remember to run this command in the root level, not the server level, so if you follow the documentation along, you may need to do `cd ..`
+$ pwd
+/Users/<your-name>/mern
+$ npm run deploy:heroku
+```
+
+### After creating heroku
+
+remember to update the file of [client/webpack.prod.js](https://github.com/amazingandyyy/mern/blob/master/client/webpack.prod.js)
+```javascript
+ 'API_URI': JSON.stringify('https://your-super-amazing-heroku-app.herokuapp.com')
 ```
 
 # Dependencies(tech-stacks)
@@ -64,30 +117,26 @@ redux-thunk: ^2.1.0 |
 # Screenshots of this project
 
 User visit public and Home page
-![User visit public and Home page](https://i.imgur.com/16vtZX5.png)
+![User visit public and Home page](http://i.imgur.com/ORCGHHY.png)
 
 User can sign in or sign up
-![User can sign in or sign up](https://i.imgur.com/fIj2HQU.png)
+![User can sign in or sign up](http://i.imgur.com/rrmbU5I.png)
 
+After signing in user can go to account route and make request to token-protected API endpoint
+![After signing in user can go to account route](http://i.imgur.com/FzLB51u.png)
+
+## Standard
+
+[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
 ## BUGs or comments
 
-[Create new Issues](https://github.com/greenfield-sharkona/sharkona_v2/issues) (preferred)
+[Create new Issues](https://github.com/amazingandyyy/mern/issues) (preferred)
 
-Email Us: sharks@gmail.com (welcome, say hi)
+Email Me: amazingandyyy@gmail.com (welcome, say hi)
 
-## Authors
-[Belal Abu-Hani](https://github.com/belal-abuhani)
-
-[Sara Al-Ayed](https://github.com/sarara497)
-
-[Israa Kittaneh](https://github.com/israakittaneh)
-
-[Hiba Tamimi](https://github.com/hibtmimi)
-
-[Rami Nawahda](https://github.com/raminawahda7)
-
-
+## Author
+[Amazingandyyy](https://amazingandyyy.com)
 
 ### License
-[GNU ](https://github.com/greenfield-sharkona/sharkona_v2/blob/main/LICENSE)
+[MIT](https://github.com/amazingandyyy/mern/blob/master/LICENSE)
