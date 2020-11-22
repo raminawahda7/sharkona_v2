@@ -6,7 +6,7 @@ import Header from './components/Home/Header';
 import Signup from "./components/signup"
 import Signuporg from "./components/signuporg"
 import Event from "./components/Home/event/event"
-import Login from './components/login';
+import Login from './components/LogIn';
 import About from './components/about';
 import Footer from './components/Home/Footer';
 import EventForm from './components/Home/event/EventForm'
